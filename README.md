@@ -1,15 +1,13 @@
 <h1 align="center">CasaCrest - Real Estate App</h1>
 
-<p align="center">A fully responsive fullstack Real-Estate App built using MERN. This app allows users to browser various listings of houses available.</p>
+<p align="center">NILE inns is a hotel, houses ,land among others listed for sale rent or lease .It is a platform created using MERN stack that allows users to list their property on the platform book rooms or hotels among others .it is developed to allow users to access, search and filter places conviently</p>
 
 <div align="center">
   
-  ![GitHub repo size](https://img.shields.io/github/repo-size/mde3/casa-crest)
-  [![Twitter Follow](https://img.shields.io/twitter/follow/mabiorduom?style=social)](https://twitter.com/intent/follow?screen_name=mabiorduom)
-  ![GitHub stars](https://img.shields.io/github/stars/mde3/casa-crest?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/mde3/casa-crest?style=social)
+  [![Twitter Follow](https://twitter.com/Ringo_Ghost333)
 
-  <a href="https://casa-crest.onrender.com/"><strong>➥ Live Demo</strong></a>
+
+  <a href="#"><strong>➥ Live Demo</strong></a>
 
 </div>
 
