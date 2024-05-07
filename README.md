@@ -11,13 +11,13 @@
 
 </div>
 
-![Preview screenshot](preview.png)
+
 
 ## 🛠 Installation and Setup 
 
 Run the following commands:
 
-``` bash
+```bash
 # Install packages and dependencies
 npm install
 
@@ -26,7 +26,3 @@ npm run dev
 
 # Build for production in the dist directory
 npm run build
-```
-
-Give a ⭐ if you found this nice!
-
