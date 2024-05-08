@@ -14,6 +14,7 @@ import CreateListing from "./pages/CreateListing"
 import MyListings from "./pages/MyListings"
 import UpdateListing from "./pages/UpdateListing"
 import Search from "./pages/Search"
+{/*  import Suggestions from "./components/suggestions"*/} 
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/sign-up' element={<Register />} />
           <Route path='/my-listings' element={<MyListings />} />
+{/*         <Route path="/suggestions" element={<Suggestions />} />*/} 
           <Route path='/search' element={<Search />} />
           <Route element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />

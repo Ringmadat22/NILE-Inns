@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.select {
+    width: 100px;
+    font-size: 0.8rem;
+}
+
+select option {
+    font-size: 0.6rem;
+}
