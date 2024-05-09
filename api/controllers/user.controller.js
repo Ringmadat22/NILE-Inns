@@ -76,3 +76,26 @@ export const getUser = async (req, res, next) => {
     next(error);
   }
 };
+
+export const addToFavorites = async (req, res, next) => {
+  const { userId, listingId } = req.params;
+  
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return next(errorHandler(404, 'User not found'));
+    }
+
+    const listingExists = user.favorites.includes(listingId);
+    if (listingExists) {
+      return res.status(400).json({ message: 'Listing already in favorites' });
+    }
+
+    user.favorites.push(listingId);
+    await user.save();
+
+    res.status(200).json({ message: 'Listing added to favorites successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
