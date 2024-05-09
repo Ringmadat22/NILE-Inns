@@ -27,6 +27,16 @@ export default function CreateListing() {
     offer: false,
     parking: false,
     furnished: false,
+    hotel: false,
+    residentialBuilding: false,
+    office: false,
+    land: false,
+    storageRooms: false,
+    commercialBuildings: false,
+    apartment: false,
+    bangalow: false,
+    storeyBuilding: false,
+    floors: 1,
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -122,6 +132,40 @@ export default function CreateListing() {
         [e.target.id]: e.target.value,
       });
     }
+    // Handling category checkboxes
+    if (e.target.name === 'category') {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.checked,
+        // Uncheck other category fields
+        hotel: e.target.id === 'hotel' ? e.target.checked : false,
+        residentialBuilding: e.target.id === 'residentialBuilding' ? e.target.checked : false,
+        office: e.target.id === 'office' ? e.target.checked : false,
+        land: e.target.id === 'land' ? e.target.checked : false,
+        storageRooms: e.target.id === 'storageRooms' ? e.target.checked : false,
+        commercialBuildings: e.target.id === 'commercialBuildings' ? e.target.checked : false,
+      });
+    }
+
+    // Handling building type checkboxes
+    if (e.target.name === 'buildingType') {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.checked,
+        // Uncheck other building type fields
+        apartment: e.target.id === 'apartment' ? e.target.checked : false,
+        bangalow: e.target.id === 'bangalow' ? e.target.checked : false,
+        storeyBuilding: e.target.id === 'storeyBuilding' ? e.target.checked : false,
+      });
+    }
+
+    // Handling floors input if storeyBuilding is checked
+    if (e.target.id === 'floors') {
+      setFormData({
+        ...formData,
+        floors: e.target.value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -212,6 +256,116 @@ export default function CreateListing() {
                 />
               </div>
             </div>
+            <div className="mt-4 mb-6 flex flex-wrap gap-4">
+              <h2>Listing Category</h2>
+              <div className='flex items-center gap-2'>
+              <input
+  type='checkbox'
+  id="hotel"
+  name="category"
+  onChange={handleChange}
+  checked={formData.hotel}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Hotel</span>
+
+<input
+  type='checkbox'
+  id="residentialBuilding"
+  name="category"
+  onChange={handleChange}
+  checked={formData.residentialBuilding}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Residential Building</span>
+
+<input
+  type='checkbox'
+  id="office"
+  name="category"
+  onChange={handleChange}
+  checked={formData.office}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Office</span>
+
+<input
+  type='checkbox'
+  id="land"
+  name="category"
+  onChange={handleChange}
+  checked={formData.land}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Land</span>
+
+<input
+  type='checkbox'
+  id="storageRooms"
+  name="category"
+  onChange={handleChange}
+  checked={formData.storageRooms}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Storage Rooms</span>
+
+<input
+  type='checkbox'
+  id="commercialBuildings"
+  name="category"
+  onChange={handleChange}
+  checked={formData.commercialBuildings}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Commercial Buildings</span>
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-4">
+              <h2>Building Type</h2> <br/>
+              <div className='flex items-center gap-2'>
+
+              <input
+  type='checkbox'
+  id="apartment"
+  name="buildingType"
+  onChange={handleChange}
+  checked={formData.apartment}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Apartment</span>
+
+<input
+  type='checkbox'
+  id="bangalow"
+  name="buildingType"
+  onChange={handleChange}
+  checked={formData.bangalow}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Bangalow</span>
+
+<input
+  type='checkbox'
+  id="storeyBuilding"
+  name="buildingType"
+  onChange={handleChange}
+  checked={formData.storeyBuilding}
+  className="block rounded-md border-0 outline-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Storey Building</span>
+
+<input
+  type='number'
+  id="floors"
+  onChange={handleChange}
+  value={formData.floors}
+  className="block rounded-md border-0 outline-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+/>
+<span>Floors</span>
+              </div>
+            </div>
+
             <div className="mt-4 flex flex-wrap gap-4">
               <div className='flex items-center gap-2'>
                 <input
@@ -395,6 +549,7 @@ export default function CreateListing() {
         </button>
         {error && <p className='text-red-700 text-center text-sm'>{error}</p>}
       </form>
+      
     </section>
   </Helmet>
 }

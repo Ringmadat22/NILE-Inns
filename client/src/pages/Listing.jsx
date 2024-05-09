@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Helmet from "../components/Helmet"
 import { useSelector } from 'react-redux';
 import ContactLandlord from '../components/ContactLandlord';
+import { CiHeart } from "react-icons/ci";
 
 const Listing = () => {
   const params = useParams();
@@ -46,11 +47,21 @@ const Listing = () => {
     fetchListing();
   }, [params.listingId]);
 
-    return <Helmet title={"Listing"}>
+  return (
+    <Helmet title={"Listing"}>
       <section className="listings">
         {loading && 
           <div className='py-36 flex items-center justify-center text-center'>
-            <p className='text-2xl'>loading...</p>
+            <p className='text-2xl'>
+              <div className="relative flex w-64 animate-pulse gap-2 p-4">
+                <div className="h-12 w-12 rounded-full bg-slate-400"></div>
+                <div className="flex-1">
+                  <div className="mb-1 h-5 w-3/5 rounded-lg bg-slate-400 text-lg"></div>
+                  <div className="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                </div>
+                <div className="absolute bottom-5 right-0 h-4 w-4 rounded-full bg-slate-400"></div>
+              </div>
+            </p>
           </div>
         }
         {error && (
@@ -78,14 +89,14 @@ const Listing = () => {
                 <React.Fragment key={url}>
                   <div 
                     style={{ display: index === currentIndex ? 'block' : 'none', backgroundImage: `url(${url})` }} 
-                    className="w-full h-full bg-black/30 bg-center bg-cover duration-500"
+                    className="w-full h-full"
                   ></div>
-                  <div onClick={prevSlide} className='flex items-center w-12 h-16 pl-2 absolute top-0 right-auto bottom-0 left-0 overflow-hidden m-auto z-[4] rounded-tr-full rounded-br-full bg-black/30 backdrop-blur-sm text-white cursor-pointer'>
+                  <div onClick={prevSlide} className='flex items-center w-12 h-16 pl-2 absolute top-0 right-auto bottom-0 left-0 overflow-hidden m-auto z-[4]  bg-black/30 backdrop-blur-sm text-white cursor-pointer'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
                       <path fill="currentColor" fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                     </svg>
                   </div>
-                  <div onClick={nextSlide} className='flex items-center justify-end w-12 h-16 pr-2 absolute top-0 right-0 bottom-0 left-auto overflow-hidden m-auto z-[4] rounded-tl-full rounded-bl-full bg-black/30 backdrop-blur-sm text-white cursor-pointer'>
+                  <div onClick={nextSlide} className='flex items-center justify-end w-12 h-16 pr-2 absolute top-0 right-0 bottom-0 left-auto overflow-hidden m-auto z-[4]  bg-black/30 backdrop-blur-sm text-white cursor-pointer'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
                       <path fill="currentColor" fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8L4.646 2.354a.5.5 0 0 1 0-.708z"/>
                     </svg>
@@ -97,6 +108,7 @@ const Listing = () => {
             <div className="py-10 max-w-7xl mx-auto px-4 lg:px-8 xl:max-w-full">
               <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
                 <div className="flex flex-col lg:w-6/12">
+                  <div className='flex justify-between'>
                   <h3 className='text-xl font-semibold mb-3 md:text-2xl'>
                     {listing.name} - $
                     {listing.offer
@@ -104,6 +116,8 @@ const Listing = () => {
                       : listing.regularPrice.toLocaleString('en-US')}
                     {listing.type === 'rent' && ' / month'}
                   </h3>
+                  <CiHeart className='cursor-pointer'/>
+                  </div>
                   <div className="flex items-center gap-1 mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M19 9A7 7 0 1 0 5 9c0 1.387.409 2.677 1.105 3.765h-.008L12 22l5.903-9.235h-.007A6.971 6.971 0 0 0 19 9zm-7 3a3 3 0 1 1 0-6a3 3 0 0 1 0 6z"/>
@@ -111,11 +125,11 @@ const Listing = () => {
                     <p className="text-base">{listing.address}</p>
                   </div>
                   <div className='flex gap-4 mb-6'>
-                    <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+                    <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 '>
                       {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
                     </p>
                     {listing.offer && (
-                      <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+                      <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 '>
                         ${+listing.regularPrice - +listing.discountPrice} OFF
                       </p>
                     )}
@@ -157,6 +171,18 @@ const Listing = () => {
                         </svg>
                         {listing.furnished ? 'Furnished' : 'Unfurnished'}
                       </li>
+                      {/* Additional fields */}
+                      <li className='flex items-center gap-1'>
+                        {listing.hotel && <span>Hotel</span>}
+                        {listing.residentialBuilding && <span>Residential Building</span>}
+                        {listing.office && <span>Office</span>}
+                        {listing.land && <span>Land: {listing.land} acres</span>}
+                        {listing.storageRooms && <span>Storage Rooms</span>}
+                        {listing.apartment && <span>Apartment</span>}
+                        {listing.bangalow && <span>Bangalow</span>}
+                        {listing.storeyBuilding && <span>Storey Building</span>}
+                        {listing.storeyBuilding && listing.floors && <span>Floors: {listing.floors}</span>}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -171,7 +197,7 @@ const Listing = () => {
                       <div className="w-full">
                         <button
                           onClick={() => setContact(true)}
-                          className="flex w-full justify-center rounded-md bg-myblue px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:w-6/12 md:m-auto"
+                          className="flex w-full justify-center  bg-myblue px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:w-6/12 md:m-auto"
                         >
                           Contact landlord
                         </button>
@@ -186,6 +212,7 @@ const Listing = () => {
         )}
       </section>
     </Helmet>
-  }
-  
-  export default Listing
+  );
+};
+
+export default Listing;

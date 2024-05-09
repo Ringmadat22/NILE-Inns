@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ListingCard from "../ListingCard";
+import SearchHome from "../sections/assets/images/searchhome.png";
+import RentingHome from "../sections/assets/images/renthome.png";
+import SellHome from "../sections/assets/images/sellhome.png"
+
+
+
 
 export default function ListingsType() {
   const [offerListings, setOfferListings] = useState([]);
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
+
 
   useEffect(() => {
     const fetchOfferListings = async () => {
@@ -47,9 +54,9 @@ export default function ListingsType() {
           <div>
             <div className='my-3 flex items-center justify-between'>
               <h2 className='text-base uppercase font-semibold md:text-xl'>
-                Featured on offer
+                211 Recommended Properties 
               </h2>
-              <Link to={'/search?offer=true'} className='bg-myblue text-white text-sm px-4 py-2 font-medium rounded-lg shadow-sm'>
+              <Link to={'/search?offer=true'} className='bg-red-500 text-white text-sm px-4 py-2 font-medium  shadow-sm'>
                 View more
               </Link>
             </div>
@@ -61,14 +68,35 @@ export default function ListingsType() {
           </div>
         )}
       </div>
+      <div className="py-16 bg-gray-100 pl-4 pr-4 md:pl-8 md:pr-8 lg:pl-20 lg:pr-20">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="mx-4 my-4 md:my-0 border rounded-lg border-gray-300 border-solid p-10 shadow-md">
+            <img src={SearchHome} alt="" />
+            <h1 className="text-center text-red-500 text-lg  font-bold p-5">Browse Homes</h1>
+            <p className="text-center text-slate-700 dark:text-slate-500 font-thin">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
+          </div>
+
+          <div className="mx-4 my-4 md:my-0 md:ml-2 lg:ml-4 border rounded-lg border-gray-300 border-solid p-10 shadow-md">
+            <img src={RentingHome} alt="" />
+            <h1 className="text-center text-red-500 text-lg  font-bold p-5">Rent a home</h1>
+            <p className="text-center text-slate-700 dark:text-slate-500 font-thin">We’re creating a seamless online experience – from shopping on the largest rental network, to applying, to paying rent.</p>
+          </div>
+
+          <div className="mx-4 my-4 md:my-0 md:ml-2 lg:ml-4 border rounded-lg border-gray-300 border-solid p-10 shadow-md">
+            <img src={SellHome} alt="" />
+            <h1 className="text-center text-red-500 text-lg  font-bold p-5">Sell a home</h1>
+            <p className="text-center text-slate-700 dark:text-slate-500 font-thin">No matter what path you take to sell your home, we can help you navigate a successful sale.</p>
+          </div>
+        </div>
+      </div>
       <div className="py-10">
         {rentListings && rentListings.length > 0 && (
           <div>
             <div className='my-3 flex items-center justify-between'>
               <h2 className='text-base uppercase font-semibold md:text-xl'>
-                Featured on rent
+                Properties for rent
               </h2>
-              <Link to={'/search?type=rent'} className='bg-myblue text-white text-sm px-4 py-2 font-medium rounded-lg shadow-sm'>
+              <Link to={'/search?type=rent'} className='bg-red-500 text-white text-sm px-4 py-2 font-medium  shadow-sm'>
                 View more
               </Link>
             </div>
@@ -85,9 +113,9 @@ export default function ListingsType() {
           <div>
             <div className='my-3 flex items-center justify-between'>
               <h2 className='text-base uppercase font-semibold md:text-xl'>
-                Featured on sale
+                Properties for Sale
               </h2>
-              <Link to={'/search?type=sale'} className='bg-myblue text-white text-sm px-4 py-2 font-medium rounded-lg shadow-sm'>
+              <Link to={'/search?type=sale'} className='bg-red-500 text-white text-sm px-4 py-2 font-medium  shadow-sm'>
                 View more 
               </Link>
             </div>
@@ -99,6 +127,45 @@ export default function ListingsType() {
           </div>
         )}
       </div>
+
+      <div className="  pl-4 pr-4 md:pl-8 md:pr-8 lg:pl-40 lg:pr-40">
+        <h1 className="py-4 font-32 px-4">211 Properties/News</h1>
+        <div className="flex flex-col md:flex-row justify-between">
+          <div style={{
+            width:"550px"
+            }} className="w-68 md:my-0 border  border-gray-300 border-solid shadow-md">
+            <img style={{
+              height:"180px",
+              width:"100%"
+            }} className="w-full h-32 border  border-gray-300 border-solid" src={SearchHome} alt="" />
+            <p className="text-left mx-4 mt-10 text-slate-700 dark:text-slate-500 font-thin">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
+          </div>
+
+          <div style={{
+            width:"550px"
+            }} className="mx-8 md:my-0 border  border-gray-300 border-solid shadow-md">
+            <img style={{
+              height:"180px",
+              width:"100%"
+            }} className="w-full h-32 border  border-gray-300 border-solid" src={SearchHome} alt="" />
+            <p className="text-left mx-4 mt-10 text-slate-700 dark:text-slate-500 font-thin">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
+          </div>
+
+          <div style={{
+            width:"500px"
+            }} className="mxl-8 md:my-0 border  border-gray-300 border-solid shadow-md">
+            <img style={{
+              height:"180px",
+              width:"100%"
+            }} className="w-full h-32 border  border-gray-300 border-solid" src={SearchHome} alt="" />
+            <p className="text-left mx-4 mt-10 text-slate-700 dark:text-slate-500 font-thin">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
+            <Link to={'/search?type=rent'} className='mx-4 decoration-underline'>
+                View more
+              </Link>
+          </div>
+        </div>
+      </div>
+
     </section>
   )
 }

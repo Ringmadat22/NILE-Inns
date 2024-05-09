@@ -88,7 +88,7 @@ const Header = () => {
 
   return (
     <header className="bg-white">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between p-6 px-4 lg:px-8 xl:max-w-full">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between p-2 px-4 lg:px-8 xl:max-w-full">
         <div className="flex lg:flex-1">
           <Link to='/' className='font-semibold flex items-center gap-x-1 -m-1.5 p-1.5'>
             Properties 211
@@ -100,7 +100,7 @@ const Header = () => {
             {links.map(({ name, href }) => {
               return (
                 <li key={name}>
-                  <NavLink to={href} className={(navClass) => navClass.isActive ? 'relative text-myred font-semibold before:absolute before:bottom-[-0.75rem] before:w-[5px] before:h-[5px] before:bg before:rounded-[50%] before:left-[45%]' : '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900'}>
+                  <NavLink to={href} className={(navClass) => navClass.isActive ? 'relative text-myred font-semibold before:absolute before:bottom-[-0.75rem] before:w-[5px] before:h-[5px] before:bg before:rounded-[50%] before:left-[45%]' : '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-red-500'}>
                     {name}
                   </NavLink>
                 </li>

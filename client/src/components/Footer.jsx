@@ -3,20 +3,22 @@ import logo from '/images/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="pt-12 pb-8">
+    <footer className="pt-12 bg-gray-400 mt-60 pb-8">
       <div className="max-w-7xl mx-auto grid gap-y-8 px-4 lg:px-8 xl:max-w-full">
         <div className="grid gap-y-8 md:grid-cols-2 lg:grid-cols-4">
         {/* <div className="grid gap-y-8 md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[repeat(4,max-content)] justify-between"> */}
           <div>
             <Link to='/' className='font-semibold flex items-center gap-x-1 mb-2'>
+              {/*
               <img
                 src={logo}
                 alt="logo" 
                 loading='eager'
                 className='w-6' 
-              />
-              CasaCrest
+              />          */}
+              211 Properties
             </Link>
+
             <p className="max-w-[50ch]">Your dream home awaits you here.</p>
           </div>
           <div>
