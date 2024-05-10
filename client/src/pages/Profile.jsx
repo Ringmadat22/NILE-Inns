@@ -232,6 +232,10 @@ const Profile = () => {
             <Link to={'/create-listing'} className="mt-4 flex items-center gap-2 w-full justify-center rounded-md bg-gray-300 px-3 py-1.5 ring-1 ring-inset ring-gray-300 text-sm font-semibold leading-6 text-gray-950 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
               Create Listing
             </Link>
+
+            <Link to={'/Favourite'} className="mt-4 flex items-center gap-2 w-full justify-center rounded-md bg-gray-300 px-3 py-1.5 ring-1 ring-inset ring-gray-300 text-sm font-semibold leading-6 text-gray-950 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            Favorite
+            </Link>
           </div>
         </form>
 

@@ -1,29 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect, } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 
 export default function ListingCard({ listing }) {
-    const [isFavorited, setIsFavorited] = useState(false); // State to track whether the listing is favorited
+    const [isFavorited, setIsFavorited] = useState(false);
 
-    // Function to handle adding/removing the listing from favorites
+    useEffect(() => {
+        const fetchFavoriteStatus = async () => {
+            try {
+                const res = await fetch(`/api/listings/${listing._id}/favorites`);
+                const data = await res.json();
+                setIsFavorited(data.isFavorited); // Assuming the server returns whether the listing is favorited
+            } catch (error) {
+                console.error('Error fetching favorite status:', error);
+                // Handle error scenarios
+            }
+        };
+
+        fetchFavoriteStatus();
+    }, [listing._id]); // Fetch favorite status when listing ID changes
+
     const handleFavoriteToggle = async () => {
-      try {
-        // Make an API request to add/remove the listing from favorites
-        const response = await fetch(`/api/user/${userId}/favorites/${listing._id}`, {
-          method: isFavorited ? 'DELETE' : 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Include any authentication headers if required
-          },
-        });
-        const data = await response.json();
-        // Update the state based on the response
-        setIsFavorited(!isFavorited);
-      } catch (error) {
-        console.error('Error toggling favorite:', error);
-        // Handle error scenarios, e.g., show a notification to the user
-      }
+        try {
+            const res = await fetch(`/api/listings/${listing._id}/favorites`, {
+                method: isFavorited ? 'DELETE' : 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Include any authentication headers if required
+                },
+            });
+            const data = await res.json();
+            setIsFavorited(!isFavorited);
+        } catch (error) {
+            console.error('Error toggling favorite:', error);
+            // Handle error scenarios
+        }
     };
+
   return (
     <div className="mt-4">
         <div className="card overflow-hidden shadow-[0px_5px_10px_0px_#0000000D]  sm:w-[340px] md:max-w-[380px] md:w-full">
@@ -51,11 +65,11 @@ export default function ListingCard({ listing }) {
                 <h3 className="mb-2 flex justify-between text-lg font-semibold text-slate-900 truncate hover:text-myblue transition duration-300 ease-linear">
                     <Link to={`/listing/${listing._id}`}>{listing.name}</Link>
                     <CiHeart
-              className={`cursor-pointer ${
-                isFavorited ? 'text-myblue' : 'text-gray-400 hover:text-myblue'
-              }`}
-              onClick={handleFavoriteToggle} // Call handleFavoriteToggle on click
-            />
+                            className={`cursor-pointer ${
+                                isFavorited ? 'text-myblue' : 'text-gray-400 hover:text-myblue'
+                                }`}
+                            onClick={handleFavoriteToggle} // Call handleFavoriteToggle on click
+                        />
                 </h3>
                 <div className="flex mb-2 text-gray-500 font-medium items-center gap-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">

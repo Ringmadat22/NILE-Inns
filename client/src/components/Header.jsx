@@ -88,7 +88,7 @@ const Header = () => {
 
   return (
     <header className="bg-white">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between p-2 px-4 lg:px-8 xl:max-w-full">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between p- px-4 lg:px-8 xl:max-w-full">
         <div className="flex lg:flex-1">
           <Link to='/' className='font-semibold flex items-center gap-x-1 -m-1.5 p-1.5'>
             Properties 211
@@ -117,6 +117,7 @@ const Header = () => {
                         alt='profile'
                       />
                     </Link>
+
                     <span onClick={handleSignOut} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 cursor-pointer">
                       Sign out
                     </span>
