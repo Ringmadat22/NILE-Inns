@@ -1,4 +1,4 @@
-<h1 align="center">CasaCrest - Real Estate App</h1>
+<h1 align="center">Nile Inns - Real Estate App</h1>
 
 <p align="center">NILE inns is a hotel, houses ,land among others listed for sale rent or lease .It is a platform created using MERN stack that allows users to list their property on the platform book rooms or hotels among others .it is developed to allow users to access, search and filter places conviently</p>
 
